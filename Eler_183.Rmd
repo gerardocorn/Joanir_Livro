@@ -1,15 +1,15 @@
 ---
 title: "Estimação da herdabilidade"
 author: "Gerardo C. Mamani"
-date: ""
-output: html_document
+date: "06/02/2018"
+output: pdf_document
 ---
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-#### Estimação da herdabilidade usando a Covariancia ou a Regressao Progenie Pai (Pag. 183) [GMAB](http://github.com)
+#### Estimação da herdabilidade usando a Covariancia ou a Regressao Progenie Pai (Pag. 183) [GMAB-USP](http://github.com)
 
 Offspring | Sire  
 ---       | ---
@@ -97,7 +97,7 @@ bOP
 
 \(V_P=491.6667\)
 
-\(h_2=\frac{V_A}{V_P}=\frac{233.333}{491.6667}=0.4745756\)
+\(h^2=\frac{V_A}{V_P}=\frac{233.333}{491.6667}=0.4745756\)
 
 
 ##### Usando a regressão (\(b_{OP}\))
@@ -112,7 +112,7 @@ bOP
 
 \(h^2=2\times0.2372882\)
 
-\(h^2=0.474576\)
+\(h^2=0.47457\)
 
 
 
