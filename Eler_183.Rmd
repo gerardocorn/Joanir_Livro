@@ -1,0 +1,118 @@
+---
+title: "Estimação da herdabilidade"
+author: "Gerardo C. Mamani"
+date: ""
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+#### Estimação da herdabilidade usando a Covariancia ou a Regressao Progenie Pai (Pag. 183) [GMAB](http://github.com)
+
+Offspring | Sire  
+---       | ---
+230       | 150 
+280       | 200 
+250       | 170 
+180       | 190
+
+```{r , comment=NA}
+pop<-read.table(header=T, text="offspring sire
+                                230 150 
+                                280 200 
+                                250 170 
+                                180 190 ")
+
+```
+```{r include=FALSE}
+pop<-as.data.frame(pop)
+```
+
+```{r include=FALSE}
+attach(pop)
+```
+
+\[Cov_{OP}= \frac{\sum{OP}-\frac{\sum{O}\sum{P}}{N}}{N-1}\]
+
+```{r , comment=NA}
+N<-nrow(pop)
+N
+```
+
+```{r, comment=NA}
+sumOP<-sum(offspring*sire)
+sumOP
+```
+```{r, comment=NA}
+sumO<-sum(offspring)
+sumO
+```
+```{r, comment=NA}
+sumP<-sum(sire)
+sumP
+```
+\[Cov_{OP}=\frac{167200-\frac{940 \times 710}{4}}{4-1}\]
+
+```{r, comment=NA}
+covop<- (sumOP-(sumO*sumP/N))/(N-1)
+covop
+```
+
+\[V_P=\frac{\sum{P^2}-\frac{(\sum{P})^2}{N}}{N-1}\]
+
+```{r, comment=NA}
+sum2P<-sum(sire^2)
+sum2P
+```
+```{r, comment=NA}
+sumP<-sum(sire)
+sumP
+```
+
+```{r, comment=NA}
+VP<-(sum2P-(sumP^2/N))/(N-1)
+VP
+```
+
+\[b_{OP}=\frac{Cov_{OP}}{V_P}\]
+\[b_{OP}=\frac{116.6667}{491.6667}\]
+\[b_{OP}=0.2372882\]
+
+```{r, comment=NA}
+bOP<-covop/VP
+bOP
+```
+
+##### Cálculo da herdabilidade
+
+##### Usando a covariancia (\(cov_{OP}\))
+
+\(Cov_{OP}=\frac{1}{2}V_A \)
+
+\(V_A=2Cov_{OP}\)
+
+\(V_A=2 \times 116.6667 = 233.3334\)
+
+\(V_P=491.6667\)
+
+\(h_2=\frac{V_A}{V_P}=\frac{233.333}{491.6667}=0.4745756\)
+
+
+##### Usando a regressão (\(b_{OP}\))
+
+\(b_{OP}=\frac{Cov_{OP}}{V_P}\)
+
+\(b_{OP}=\frac{116.6667}{491.6667}=0.2372882\)
+
+\(b_{OP}=\frac{\frac{1}{2}V_A}{V_P}=\frac{1}{2}\frac{V_A}{V_P}=\frac{1}{2}h^2\)
+
+\(h^2=2b_{OP}\)
+
+\(h^2=2\times0.2372882\)
+
+\(h^2=0.474576\)
+
+
+
